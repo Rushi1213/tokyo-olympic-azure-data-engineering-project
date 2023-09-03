@@ -1,0 +1,33 @@
+SELECT TOP (100) [PersonName]
+,[Country]
+,[Discipline]
+FROM [athletes].[dbo].[athletes]
+
+
+-- COUNT THE NUMBER OF ATHLETES FROM EACH COUNTRY
+
+SELECT Country, COUNT(*) as TotalAtheltes
+FROM [athletes].[dbo].[athletes]
+GROUP BY Country
+ORDER BY TotalAtheltes DESC;
+
+-- calculate the total medals won by each country
+
+SELECT
+Team_Country,
+SUM(Gold) TOTAL_Gold,
+SUM(Silver) Total_Silver,
+SUM(Bronze) Total_Bronze
+FROM medals 
+GROUP By Team_Country 
+ORDER By Team_Country DESC;
+
+
+-- calulate the average number of entries by gender for each descipline
+SELECT Discipline,
+AVG(Female) Avg_Female,
+AVG(Male) Avg_Male
+FROM entriesgender
+GROUP By Discipline ;
+
+ 
